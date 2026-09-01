@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using QFramework;
+using QFramework.Example;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,7 +21,8 @@ public class GameManager : MonoSingleton<GameManager>
     public GameState gameState;
     private void Start()
     {
-        gameState = GameState.UI;
+        StartCoroutine(Begin());
+        /*gameState = GameState.UI;
         InputManager.Instance.pause.performed += (context) =>
         {
             gameState = GameState.Paused;
@@ -28,8 +31,19 @@ public class GameManager : MonoSingleton<GameManager>
             AudioManager.Instance.PauseBackgroundMusic();
             AudioManager.Instance.PauseAllSounds();
             AudioManager.Instance.PlaySound("UI/ui_button_confirm",false);
-            Time.timeScale = 0.0f;                    
+            Time.timeScale = 0.0f;
             UIManager.Instance.ShowPanel<BasePanel>("PausePanel");
-        };
+        };*/
+    }
+
+    private void Update()
+    {
+        print(GameArchitecture.Interface.GetSystem<IUIPanelStackSystem>().mUIStack.Count);
+    }
+
+    IEnumerator Begin()
+    {
+        yield return new WaitForSeconds(0.2f);
+        UIKit.OpenPanel<MainMenuPanel>();
     }
 }
