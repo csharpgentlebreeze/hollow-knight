@@ -2,7 +2,8 @@
     "name": "UIKit",
     "references": [
         "QFramework.CoreKit",
-        "QFramework"
+        "QFramework",
+        "UniTask"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using QFramework;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
@@ -81,7 +82,6 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     protected void Awake()
     {
-        base.Awake();
         audioMixer = ResourceManager.Instance.Load<AudioMixer>("AudioMixer/GameAudio");
         if (soundObj == null)
         {

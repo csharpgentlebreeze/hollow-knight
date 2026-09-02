@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Esc",
+                    "type": "Button",
+                    "id": "4c481787-76be-4eef-9f0f-608e1580f59a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -130,17 +139,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "92ca6332-d39c-4ef4-80a8-f9490600afb7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Esc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
             "name": "UI",
-            "id": "3529405a-852c-42c4-88b4-9e798337fb1b",
+            "id": "ece02a39-e626-4f62-ad25-56944473f53e",
             "actions": [
                 {
-                    "name": "Esc",
+                    "name": "New action",
                     "type": "Button",
-                    "id": "00360346-089e-43ee-88fc-6735f48d8adb",
+                    "id": "3d7a48b6-fdca-497c-8c57-7298679c7392",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -150,12 +170,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "cd3bf8e1-0437-45a5-9774-dba18c8beaae",
-                    "path": "<Keyboard>/escape",
+                    "id": "f4f10cfb-6548-48bb-9210-61166a7ade0d",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Esc",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

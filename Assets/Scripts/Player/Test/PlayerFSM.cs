@@ -80,7 +80,7 @@ namespace Player
         void Start()
         {
             StopInput();
-            InputManager.Instance.attack.performed += (context) =>
+            /*InputManager.Instance.attack.performed += (context) =>
             {
                 if (canAttack)
                 {
@@ -100,7 +100,7 @@ namespace Player
                 {
                     TransitionState(States.Dash);
                 }
-            };
+            };*/
         }
 
         // Update is called once per frame
@@ -108,8 +108,8 @@ namespace Player
         {
             if (canMove)
             {
-                x = InputManager.Instance.Horizontal.ReadValue<float>();
-                y = InputManager.Instance.Vertical.ReadValue<float>();
+                /*x = InputManager.Instance.Horizontal.ReadValue<float>();
+                y = InputManager.Instance.Vertical.ReadValue<float>();*/
             }
             
             if (x < 0)
@@ -251,14 +251,14 @@ namespace Player
         
         IEnumerator AddRecoilForce()  //普通击退
         {
-            InputManager.Instance.SetActionInput("Horizontal", false);
+            /*InputManager.Instance.SetActionInput("Horizontal", false);
             if (isFacingRight)
             {
                 rb.AddForce(Vector2.left * parameter.recoilForce, ForceMode2D.Impulse);
 
-            }
+            }*/
             yield return new WaitForSeconds(0.2f);
-            InputManager.Instance.SetActionInput("Horizontal", true);
+            /*InputManager.Instance.SetActionInput("Horizontal", true);*/
         }
         
         private void Grouding(Collision2D col, bool exitGround)
@@ -298,13 +298,13 @@ namespace Player
 
         public void StopInput()
         {
-            InputManager.Instance.SetMapInput("Player", false);
+            /*InputManager.Instance.SetMapInput("Player", false);*/
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     
         public void ResumeInput()
         {
-            InputManager.Instance.SetMapInput("Player", true);
+            /*InputManager.Instance.SetMapInput("Player", true);*/
         }
 
         #endregion

@@ -8,9 +8,10 @@ public class GameArchitecture : Architecture<GameArchitecture>
     //×¢²áÄ£¿é
     protected override void Init()
     {
+        ResKit.Init();
         //Model
-        RegisterModel<IInputDataModel>(new InputDataModel());
         RegisterModel<IVolumeModel>(new VolumeModel());
+        RegisterModel<IRunTimeDataModel>(new RunTimeDataModel());
         //System
         RegisterSystem<IUIPanelStackSystem>(new UIPanelStackSystem());
         //Utility

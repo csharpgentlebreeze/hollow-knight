@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using QFramework;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -82,7 +83,6 @@ public class PoolManager : MonoSingleton<PoolManager>
 
     protected void Awake()
     {
-        base.Awake();
         pool = new Dictionary<string, PoolData>();
         if (poolParent == null)
         {

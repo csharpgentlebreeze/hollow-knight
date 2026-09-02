@@ -5,10 +5,10 @@ using QFramework;
 
 namespace QFramework.Example
 {
-	public class MainMenuPanelData : UIPanelData
+	public class PausePanelData : UIPanelData
 	{
 	}
-	public partial class MainMenuPanel : UIPanel, IController
+	public partial class PausePanel : UIPanel, IController
 	{
 		public Animator anim;
 		private ResLoader resLoader;
@@ -16,26 +16,26 @@ namespace QFramework.Example
 		{
 			return GameArchitecture.Interface;
 		}
-		
 		protected override void OnInit(IUIData uiData = null)
 		{
 			anim = GetComponent<Animator>();
 			resLoader = ResLoader.Allocate();
-			mData = uiData as MainMenuPanelData ?? new MainMenuPanelData();
+			mData = uiData as PausePanelData ?? new PausePanelData();
 			// please add init code here
-			this.GetModel<IRunTimeDataModel>().GameStatus.Value = GameState.Menu;
-			StartGame.onClick.AddListener(() =>
+			this.GetModel<IRunTimeDataModel>().GameStatus.Value = GameState.Paused;
+			Continue.onClick.AddListener(() =>
 			{
 				this.GetModel<IRunTimeDataModel>().GameStatus.Value = GameState.Playing;
-				Begin().Forget();
+				BackAndClose().Forget();
 			});
 			Option.onClick.AddListener(() =>
 			{
 				OpenPanel<OptionMenuPanel>().Forget();
 			});
-			QuitGame.onClick.AddListener(() =>
+			BackToMainMenu.onClick.AddListener(() =>
 			{
-				Application.Quit();
+				this.GetModel<IRunTimeDataModel>().GameStatus.Value = GameState.Menu;
+				Back().Forget();
 			});
 		}
 		
@@ -56,9 +56,9 @@ namespace QFramework.Example
 		
 		protected override void OnClose()
 		{
-			StartGame.onClick.RemoveAllListeners();
+			Continue.onClick.RemoveAllListeners();
 			Option.onClick.RemoveAllListeners();
-			QuitGame.onClick.RemoveAllListeners();
+			BackToMainMenu.onClick.RemoveAllListeners();
 		}
 		
 		//OpenAndHide
@@ -83,18 +83,22 @@ namespace QFramework.Example
 			}
 			CloseSelf();
 		}
-
-		private async UniTask Begin()
-		{ 
-			anim.Play("FadeOut");
-			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
-			resLoader.LoadSceneAsync("Opening");
-			CloseSelf();
-		}
 		
 		private void Esc(bool value)
 		{
-			if (value)Application.Quit();
+			if (value)
+			{
+				this.GetModel<IRunTimeDataModel>().GameStatus.Value = GameState.Playing;
+				BackAndClose().Forget();
+			}
+		}
+		
+		private async UniTask Back()
+		{ 
+			anim.Play("FadeOut");
+			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
+			CloseSelf();
+			resLoader.LoadSceneAsync("MainMenu");
 		}
 	}
 }

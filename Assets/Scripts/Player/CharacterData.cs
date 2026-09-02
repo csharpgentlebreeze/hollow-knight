@@ -52,7 +52,7 @@ public class CharacterData : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Dead");
 
-        InputManager.Instance.SetMapInput("Player",false);
+        /*InputManager.Instance.SetMapInput("Player",false);*/
     
     }
     public int GetCurrentHealth()

@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class PausePanel : BasePanel
+/*public class PausePanel : BasePanel
 {
     void Start()
     {
-        InputManager.Instance.goOn.performed += (context) =>
+        /*InputManager.Instance.goOn.performed += (context) =>
         {
             AudioManager.Instance.PlaySound("UI/ui_button_confirm",false);
             Continue();
-        };
+        };#1#
     }
     protected override void OnClick(string btnName)
     {
@@ -24,18 +24,18 @@ public class PausePanel : BasePanel
                 case "Option":
                     StartCoroutine(WaitAndHide("PausePanel", () =>
                     {
-                        GameManager.Instance.gameState = GameState.UI;
-                        UIManager.Instance.ShowPanel<BasePanel>("OptionMenuPanel");
+                        /*GameManager.Instance.gameState = GameState.UI;#1#
+                        /*UIManager.Instance.ShowPanel<BasePanel>("OptionMenuPanel");#1#
                     }));
                     break;
                 case "BackToMainMenu":
                     StartCoroutine(WaitAndHide("PausePanel", () =>
                     {
-                        UIManager.Instance.ClosePanel("KnightPanel");
+                        /*UIManager.Instance.ClosePanel("KnightPanel");
                         GameManager.Instance.gameState = GameState.UI;
                         Time.timeScale = 1.0f;
                         UIManager.Instance.ClearPanel();
-                        SceneManager.LoadScene(0);
+                        SceneManager.LoadScene(0);#1#
                     }));
                     break;
             }
@@ -45,7 +45,7 @@ public class PausePanel : BasePanel
     {
         StartCoroutine(WaitAndHide("PausePanel", () =>
         {
-            GameManager.Instance.gameState = GameState.Playing;
+            /*GameManager.Instance.gameState = GameState.Playing;#1#
             Cursor.visible = false;
             EventManager.Instance.EventTrigger("Continue");
             AudioManager.Instance.UnPauseBackgroundMusic();
@@ -53,4 +53,4 @@ public class PausePanel : BasePanel
             Time.timeScale = 1.0f;
         }));
     }
-}
+}*/

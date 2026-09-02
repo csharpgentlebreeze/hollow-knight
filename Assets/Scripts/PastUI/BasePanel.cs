@@ -53,7 +53,7 @@ public class BasePanel : MonoBehaviour
     {
         animator.Play("FadeOut");
         yield return new WaitForSecondsRealtime(0.5f);
-        UIManager.Instance.HidePanel(panelName);
+        /*UIManager.Instance.HidePanel(panelName);*/
         callback?.Invoke();
     }
     
@@ -61,7 +61,7 @@ public class BasePanel : MonoBehaviour
     {
         animator.Play("FadeOut");
         yield return new WaitForSecondsRealtime(0.5f);
-        UIManager.Instance.ClosePanel(panelName);
+        /*UIManager.Instance.ClosePanel(panelName);*/
         callback?.Invoke();
     }
     

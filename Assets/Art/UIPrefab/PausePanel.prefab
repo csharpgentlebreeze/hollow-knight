@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4656876221651687952}
   - component: {fileID: 2503689845291929320}
   - component: {fileID: 8387538866511761710}
-  - component: {fileID: 2556074925292559763}
+  - component: {fileID: 424532653726695872}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -225,7 +225,7 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &2556074925292559763
+--- !u!114 &424532653726695872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,9 +234,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172352206349482747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09fc2498dbe7d8645b34cb164ae5100a, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3d098e254e8b84ebee4412cf06014c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Continue: {fileID: 7432916275869215103}
+  Option: {fileID: 6862785342134248118}
+  BackToMainMenu: {fileID: 148871032902098177}
 --- !u!1 &1325819871548748596
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +553,7 @@ GameObject:
   - component: {fileID: 148871032902098177}
   - component: {fileID: 7744980105995775045}
   - component: {fileID: 3451701049441842873}
+  - component: {fileID: 5743928331772525232}
   m_Layer: 0
   m_Name: BackToMainMenu
   m_TagString: Untagged
@@ -677,6 +681,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c19ae0591c9ef48a8390380b70d6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5743928331772525232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159851826562627032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MarkType: 0
+  CustomComponentName: BackToMainMenu
+  CustomComment: 
+  mComponentName: UnityEngine.UI.Button
 --- !u!1 &3794449398462964952
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +710,7 @@ GameObject:
   - component: {fileID: 7432916275869215103}
   - component: {fileID: 3786758295790086538}
   - component: {fileID: 72954164277707427}
+  - component: {fileID: 6779395450635046586}
   m_Layer: 0
   m_Name: Continue
   m_TagString: Untagged
@@ -817,6 +838,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c19ae0591c9ef48a8390380b70d6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6779395450635046586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794449398462964952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MarkType: 0
+  CustomComponentName: Continue
+  CustomComment: 
+  mComponentName: UnityEngine.UI.Button
 --- !u!1 &4363237030962806118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1366,7 @@ GameObject:
   - component: {fileID: 6862785342134248118}
   - component: {fileID: 7860314588882775975}
   - component: {fileID: 4518313466224065946}
+  - component: {fileID: 8275412911704652694}
   m_Layer: 0
   m_Name: Option
   m_TagString: Untagged
@@ -1456,6 +1494,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c19ae0591c9ef48a8390380b70d6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8275412911704652694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132457756734945394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MarkType: 0
+  CustomComponentName: Option
+  CustomComment: 
+  mComponentName: UnityEngine.UI.Button
 --- !u!1 &7498169300292425925
 GameObject:
   m_ObjectHideFlags: 0

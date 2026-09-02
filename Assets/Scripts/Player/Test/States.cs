@@ -435,10 +435,10 @@ namespace Player
         public void OnUpdate()
         {
             timer += Time.deltaTime;
-            if (timer > 1f || InputManager.Instance.jump.IsPressed() == false)
+            /*if (timer > 1f || InputManager.Instance.jump.IsPressed() == false)
             {
                 manager.TransitionState(States.Fall);
-            }
+            }*/
         }
         
         public void OnFixedUpdate()

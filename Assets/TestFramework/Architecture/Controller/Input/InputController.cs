@@ -11,7 +11,7 @@ public struct InputData
     public bool WantoEsc;
 }
 
-public class InputController : MonoBehaviour, IController
+public class InputController : PersistentMonoSingleton<InputController>, IController
 {
     private InputData _data = new InputData();
     //复用命令对象，以免造成GC
@@ -30,6 +30,7 @@ public class InputController : MonoBehaviour, IController
     
     private void Awake()
     {
+        base.Awake();
         /*GetArchitecture().RegisterUtility<InputUtility>(this);*/
     }
 

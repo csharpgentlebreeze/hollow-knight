@@ -11,7 +11,6 @@ namespace QFramework.Example
 	public partial class VolumeMenuPanel : UIPanel, IController
 	{
 		public Animator anim;
-		
 		public IArchitecture GetArchitecture()
 		{
 			return GameArchitecture.Interface;
@@ -22,7 +21,6 @@ namespace QFramework.Example
 			anim = GetComponent<Animator>();
 			mData = uiData as VolumeMenuPanelData ?? new VolumeMenuPanelData();
 			// please add init code here
-			this.GetModel<IInputDataModel>().WantoEsc.Register(Esc);
 			GlobalVolume.onValueChanged.AddListener(volume =>
 			{
 				GlobalVolumeValue.text = volume.ToString();
@@ -70,15 +68,17 @@ namespace QFramework.Example
 		
 		protected override void OnShow()
 		{
+			this.GetModel<IRunTimeDataModel>().WantoEsc.Register(Esc);
 		}
 		
 		protected override void OnHide()
 		{
+			this.GetModel<IRunTimeDataModel>().WantoEsc.UnRegister(Esc);
 		}
 		
 		protected override void OnClose()
 		{
-			this.GetModel<IInputDataModel>().WantoEsc.UnRegister(Esc);
+			this.GetModel<IRunTimeDataModel>().WantoEsc.UnRegister(Esc);
 			GlobalVolume.onValueChanged.RemoveAllListeners();
 			MusicVolume.onValueChanged.RemoveAllListeners();
 			SoundVolume.onValueChanged.RemoveAllListeners();
@@ -87,23 +87,26 @@ namespace QFramework.Example
 		}
 		
 		//OpenAndHide
-		private async UniTask OpenPanel<T>() where T : UIPanel
+		private async UniTask OpenPanel<T>(UILevel level = UILevel.Common,IUIData data = null,string assetBundleName = null, string prefabName = null) where T : UIPanel
 		{
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
 			UIKit.HidePanel(name);
-			UIKit.OpenPanel<T>();
+			UIKit.OpenPanel<T>(level,data,assetBundleName,prefabName);
 		}
 		
 		private async UniTask BackAndClose()
 		{ 
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
-			CloseSelf();
 			this.SendCommand(new PopCommmand());
 			var panel = this.SendCommand(new PeekCommand());
-			string panelName = panel.GameObjName ?? panel.PanelType.Name;
-			UIKit.ShowPanel(panelName);
+			if (panel != null)
+			{
+				string panelName = panel.GameObjName ?? panel.PanelType.Name;
+				UIKit.GetPanel(panelName).Show();
+			}
+			CloseSelf();
 		}
 		
 		private void Esc(bool value)

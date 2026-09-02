@@ -815,7 +815,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1196027680}
   - component: {fileID: 1196027679}
-  - component: {fileID: 1196027681}
   m_Layer: 0
   m_Name: Voidheart_menu_BG
   m_TagString: Untagged
@@ -890,18 +889,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1196027681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196027678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac6e384622f562840b2fa4b37628d713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1332754568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 890448504430391729, guid: 22d189ddcc28c0e4ba5c2d6a78c39c37, type: 3}
@@ -986,7 +973,7 @@ MonoBehaviour:
   jumpAction: {fileID: 5459277662468066585, guid: 8af6f903427804b489a1f1bb6302ffc9, type: 3}
   moveAction: {fileID: 7395439162342642766, guid: 8af6f903427804b489a1f1bb6302ffc9, type: 3}
   dashAction: {fileID: -6651894082342331780, guid: 8af6f903427804b489a1f1bb6302ffc9, type: 3}
-  escAction: {fileID: -5758521041375259793, guid: 8af6f903427804b489a1f1bb6302ffc9, type: 3}
+  escAction: {fileID: -9199853970790513998, guid: 8af6f903427804b489a1f1bb6302ffc9, type: 3}
 --- !u!4 &1619162154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3468199400483372595, guid: 0fad104f98452c9429908d19dcfe9f45, type: 3}
@@ -1076,6 +1063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115498748}
   - component: {fileID: 2115498747}
+  - component: {fileID: 2115498749}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1095,7 +1083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7809b1823e850fa4696ae29761c04c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
 --- !u!4 &2115498748
 Transform:
   m_ObjectHideFlags: 0
@@ -1111,6 +1098,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115498749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115498745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3cb85e71dab8e4692c8213967651c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

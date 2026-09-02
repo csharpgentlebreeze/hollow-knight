@@ -7,6 +7,8 @@
  ****************************************************************************/
 
 
+using Cysharp.Threading.Tasks;
+
 namespace QFramework
 {
 	using UnityEngine;

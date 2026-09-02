@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using QFramework;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -27,7 +28,6 @@ public class UIManager : MonoSingleton<UIManager>
     private Transform system;
     private void Awake()
     {
-        base.Awake();
         GameObject obj = ResourceManager.Instance.Load<GameObject>("UI/Canvas");
         canvas = obj.GetComponent<RectTransform>();
         DontDestroyOnLoad(obj);
@@ -47,11 +47,11 @@ public class UIManager : MonoSingleton<UIManager>
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
 
-        InputManager.Instance.back.performed += (context) =>
+        /*InputManager.Instance.back.performed += (context) =>
         {
             AudioManager.Instance.PlaySound("UI/ui_button_confirm",false);
             BackToLast();
-        };
+        };*/
     }
     
     public Transform GetLayer(E_UI_Layer layer) //获取UI层级的Transform，方便直接在外部进行操作

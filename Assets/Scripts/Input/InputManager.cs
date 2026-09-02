@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoSingleton<InputManager>
+/*public class InputManager : MonoSingleton<InputManager>
 {
     private PlayerInput playerInput;
 
@@ -86,4 +86,4 @@ public class InputManager : MonoSingleton<InputManager>
             playerInput.actions.FindAction(action).Disable();
         }
     }
-}
+}*/

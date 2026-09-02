@@ -24,7 +24,7 @@ public class GameOver : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             UIManager.Instance.ClosePanel("KnightPanel");
-            GameManager.Instance.gameState = GameState.UI;
+            /*GameManager.Instance.gameState = GameState.UI;*/
             UIManager.Instance.ClearPanel();
             FindAnyObjectByType<ScreenMask>()._maskImage.DOFade(1,1f).OnComplete(() =>
             {

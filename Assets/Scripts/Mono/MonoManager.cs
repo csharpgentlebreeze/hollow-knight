@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using QFramework;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,6 @@ public class MonoManager : MonoSingleton<MonoManager>
 
     protected void Awake()
     {
-        base.Awake();
         GameObject obj = new GameObject("MonoController");
         monoController = obj.AddComponent<MonoController>();
     }
