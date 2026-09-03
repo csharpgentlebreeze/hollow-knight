@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1de9a3b04ef893241ae77872995ea8c7
+guid: 7bddf3a0488dfce448f84a13c35f768f
 VideoClipImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -14,5 +14,5 @@ VideoClipImporter:
   importAudio: 1
   targetSettings: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: prologue_webm
   assetBundleVariant: 

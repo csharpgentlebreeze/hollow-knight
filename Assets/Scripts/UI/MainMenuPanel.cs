@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ namespace QFramework.Example
 	{
 		public Animator anim;
 		private ResLoader resLoader;
+		private bool mIsClosing;
+		private CancellationTokenSource tokenSource;
 		public IArchitecture GetArchitecture()
 		{
 			return GameArchitecture.Interface;
@@ -19,6 +22,7 @@ namespace QFramework.Example
 		
 		protected override void OnInit(IUIData uiData = null)
 		{
+			tokenSource = new CancellationTokenSource();
 			anim = GetComponent<Animator>();
 			resLoader = ResLoader.Allocate();
 			mData = uiData as MainMenuPanelData ?? new MainMenuPanelData();
@@ -46,6 +50,7 @@ namespace QFramework.Example
 		
 		protected override void OnShow()
 		{
+			mIsClosing = false;
 			this.GetModel<IRunTimeDataModel>().WantoEsc.Register(Esc);
 		}
 		
@@ -59,19 +64,25 @@ namespace QFramework.Example
 			StartGame.onClick.RemoveAllListeners();
 			Option.onClick.RemoveAllListeners();
 			QuitGame.onClick.RemoveAllListeners();
+			resLoader.Recycle2Cache();
+			resLoader = null;
 		}
 		
 		//OpenAndHide
 		private async UniTask OpenPanel<T>(UILevel level = UILevel.Common,IUIData data = null,string assetBundleName = null, string prefabName = null) where T : UIPanel
 		{
+			if (mIsClosing) return;
+			mIsClosing = true;
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
 			UIKit.HidePanel(name);
 			UIKit.OpenPanel<T>(level,data,assetBundleName,prefabName);
 		}
-		
+
 		private async UniTask BackAndClose()
-		{ 
+		{
+			if (mIsClosing) return;
+			mIsClosing = true;
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
 			this.SendCommand(new PopCommmand());
@@ -85,10 +96,23 @@ namespace QFramework.Example
 		}
 
 		private async UniTask Begin()
-		{ 
+		{
+			if (mIsClosing) return;
+			mIsClosing = true;
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
-			resLoader.LoadSceneAsync("Opening");
+			resLoader.LoadSceneAsync("Opening",onStartLoading: (op) =>
+			{
+				op.completed += (op) =>
+				{
+					UIKit.OpenPanel<Chapter>();
+				};
+			});
+			// OnOpen 时把自己 Push 进了自定义 UI 栈，这里不会再 Peek/Show 任何面板，
+			// 必须自己 Pop 掉，否则这条记录会一直悬空在栈底：它引用的 PanelInfo
+			// 在 CloseSelf() 时会被 UIKit 回收进对象池并被其它面板复用/改写，
+			// 之后任何 PeekCommand 都可能读到内容错乱、指向已销毁面板的脏数据。
+			this.SendCommand(new PopCommmand());
 			CloseSelf();
 		}
 		

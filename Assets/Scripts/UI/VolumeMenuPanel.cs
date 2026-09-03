@@ -11,6 +11,7 @@ namespace QFramework.Example
 	public partial class VolumeMenuPanel : UIPanel, IController
 	{
 		public Animator anim;
+		private bool mIsClosing;
 		public IArchitecture GetArchitecture()
 		{
 			return GameArchitecture.Interface;
@@ -68,6 +69,7 @@ namespace QFramework.Example
 		
 		protected override void OnShow()
 		{
+			mIsClosing = false;
 			this.GetModel<IRunTimeDataModel>().WantoEsc.Register(Esc);
 		}
 		
@@ -89,14 +91,18 @@ namespace QFramework.Example
 		//OpenAndHide
 		private async UniTask OpenPanel<T>(UILevel level = UILevel.Common,IUIData data = null,string assetBundleName = null, string prefabName = null) where T : UIPanel
 		{
+			if (mIsClosing) return;
+			mIsClosing = true;
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
 			UIKit.HidePanel(name);
 			UIKit.OpenPanel<T>(level,data,assetBundleName,prefabName);
 		}
-		
+
 		private async UniTask BackAndClose()
-		{ 
+		{
+			if (mIsClosing) return;
+			mIsClosing = true;
 			anim.Play("FadeOut");
 			await anim.WaitAnimationEnd("FadeOut", 0, this.GetCancellationTokenOnDestroy());
 			this.SendCommand(new PopCommmand());

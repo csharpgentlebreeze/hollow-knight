@@ -9,6 +9,7 @@ public struct InputData
     public bool WantoJump;
     public bool WantoDash;
     public bool WantoEsc;
+    public bool WantoSpace;
 }
 
 public class InputController : PersistentMonoSingleton<InputController>, IController
@@ -22,6 +23,7 @@ public class InputController : PersistentMonoSingleton<InputController>, IContro
     public InputActionReference moveAction;
     public InputActionReference dashAction;
     public InputActionReference escAction;
+    public InputActionReference spaceAction;
 
     public IArchitecture GetArchitecture()
     {
@@ -41,7 +43,7 @@ public class InputController : PersistentMonoSingleton<InputController>, IContro
 
     public void ToggleAction(bool enable)
     {
-        InputActionReference[] all = {attackAction, jumpAction, moveAction, dashAction, escAction};
+        InputActionReference[] all = {attackAction, jumpAction, moveAction, dashAction, escAction, spaceAction};
         foreach (var ac in all)
         {
             if (ac == null) continue;
@@ -57,6 +59,7 @@ public class InputController : PersistentMonoSingleton<InputController>, IContro
         _data.WantoJump = jumpAction != null && jumpAction.action.WasPressedThisFrame();
         _data.WantoDash = dashAction != null && dashAction.action.WasPressedThisFrame();
         _data.WantoEsc = escAction != null && escAction.action.WasPressedThisFrame();
+        _data.WantoSpace = spaceAction != null && spaceAction.action.WasPressedThisFrame();
         _command._data = _data;
         this.SendCommand(_command);
     }

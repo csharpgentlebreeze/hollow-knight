@@ -23,6 +23,7 @@ public interface IRunTimeDataModel : IModel
     public BindableProperty<bool> WantoJump { get; }
     public BindableProperty<bool> WantoDash { get; }
     public BindableProperty<bool> WantoEsc { get; }
+    public BindableProperty<bool> WantoSpace { get; }
 }
 
 public class RunTimeDataModel : AbstractModel, IRunTimeDataModel
@@ -34,6 +35,7 @@ public class RunTimeDataModel : AbstractModel, IRunTimeDataModel
     public BindableProperty<bool> WantoJump { get; } = new BindableProperty<bool>();
     public BindableProperty<bool> WantoDash { get; } = new BindableProperty<bool>();
     public BindableProperty<bool> WantoEsc { get; } = new BindableProperty<bool>();
+    public BindableProperty<bool> WantoSpace { get; } = new BindableProperty<bool>();
     protected override void OnInit()
     {
         

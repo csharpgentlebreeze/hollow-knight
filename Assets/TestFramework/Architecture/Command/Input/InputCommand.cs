@@ -11,5 +11,6 @@ public class InputCommand : AbstractCommand
         model.WantoJump.Value = _data.WantoJump;
         model.WantoDash.Value = _data.WantoDash;
         model.WantoEsc.Value = _data.WantoEsc;
+        model.WantoSpace.Value = _data.WantoSpace;
     }
 }
